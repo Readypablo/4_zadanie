@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 21 2024 г., 10:04
+-- Время создания: Фев 27 2024 г., 11:37
 -- Версия сервера: 8.0.30
--- Версия PHP: 7.4.30
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -106,7 +106,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `password`, `email`) VALUES
-(1, 'admin', 'admin', '12345678', '123123', '11111');
+(1, 'admin', 'admin', '12345678', '123123', '11111'),
+(22, '3', '3', '3', '3', '3'),
+(23, '2', '2', '2', '2', '2');
 
 -- --------------------------------------------------------
 
@@ -117,15 +119,19 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `password`, `emai
 CREATE TABLE `workout` (
   `id` int NOT NULL,
   `first_namee` varchar(50) NOT NULL,
-  `lek_id` int NOT NULL
+  `nomer` varchar(50) NOT NULL,
+  `info` varchar(9999) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `workout`
 --
 
-INSERT INTO `workout` (`id`, `first_namee`, `lek_id`) VALUES
-(35, 'admin', 3);
+INSERT INTO `workout` (`id`, `first_namee`, `nomer`, `info`, `status`) VALUES
+(36, '3', 'zzzzz', 'ездил без прав', 'откланено'),
+(37, '3', 'а509во', 'превышение скорости', 'откланено'),
+(38, '2', '2', '2', 'откланено');
 
 -- --------------------------------------------------------
 
@@ -172,8 +178,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `workout`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `first_namee` (`first_namee`),
-  ADD KEY `lek_id` (`lek_id`);
+  ADD KEY `first_namee` (`first_namee`);
 
 --
 -- Индексы таблицы `workoutnot`
@@ -208,13 +213,13 @@ ALTER TABLE `Reviews`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT для таблицы `workout`
 --
 ALTER TABLE `workout`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT для таблицы `workoutnot`
@@ -225,12 +230,6 @@ ALTER TABLE `workoutnot`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
-
---
--- Ограничения внешнего ключа таблицы `workout`
---
-ALTER TABLE `workout`
-  ADD CONSTRAINT `workout_ibfk_1` FOREIGN KEY (`lek_id`) REFERENCES `books` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ограничения внешнего ключа таблицы `workoutnot`

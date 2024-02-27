@@ -33,8 +33,8 @@ if(isset($_REQUEST['first_name'])){
 
   
 
-    $query = "INSERT into `users` (first_name, last_name, phone, email,password,balenc)
-     VALUES ('$first_name', '$last_name', '$mobile', '$email' ,'$password','0')";
+    $query = "INSERT into `users` (first_name, last_name, phone, email,password)
+     VALUES ('$first_name', '$last_name', '$mobile', '$email' ,'$password')";
 
 
 
